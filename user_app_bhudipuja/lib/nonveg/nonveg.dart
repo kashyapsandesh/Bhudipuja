@@ -221,6 +221,6 @@ class NonVeg extends StatelessWidget {
         ),
       ),
     );
-    ;
+    
   }
 }

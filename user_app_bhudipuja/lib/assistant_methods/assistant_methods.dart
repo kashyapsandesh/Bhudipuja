@@ -1,10 +1,11 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:user_app_bhudipuja/assistant_methods/cart_item_counter.dart';
 import 'package:user_app_bhudipuja/global/global.dart';
-
 
 separateOrderItemIds(orderId) {
   List<String> separateItemIdsList = [], defaultItemList = [];
@@ -40,19 +41,24 @@ separateItemIds() {
 }
 
 addItemToCart(String? foodItemId, BuildContext context, int itemCounter) {
+  print(foodItemId.toString());
+  print("${itemCounter}item counter");
+  print(firebaseAuth.currentUser!.uid.toString() + "current user uid");
   List<String>? tempList = sharedPreferences!.getStringList("userCart");
   // foodItemId = 'garbadgevalue';
   tempList!.add("${foodItemId!}:$itemCounter"); //1210259022: 2
+  // tempList!.add("1210259022: 2");
 
   FirebaseFirestore.instance
       .collection("users")
       .doc(firebaseAuth.currentUser!.uid)
       .update({
-    "userCart": tempList,
+    "userCart": tempList
   }).then((value) {
     Fluttertoast.showToast(msg: "Item Added Successfully. ");
 
     sharedPreferences!.setStringList("userCart", tempList);
+    log("heelo");
 
     //update the page
 

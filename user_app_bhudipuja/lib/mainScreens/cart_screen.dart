@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,7 +10,6 @@ import 'package:user_app_bhudipuja/mainScreens/address_screen.dart';
 import 'package:user_app_bhudipuja/models/items.dart';
 import 'package:user_app_bhudipuja/widgets/cart_item_design.dart';
 import 'package:user_app_bhudipuja/widgets/progress_bar.dart';
-
 
 import '../assistant_methods/total_ammount.dart';
 import '../splashScreen/splash_screen.dart';
@@ -133,11 +134,16 @@ class _CartScreenState extends State<CartScreen> {
           ),
           StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection("items")
-                  .where("itemId", whereIn: separateItemIds())
+                  // .collection("items")
+                  // .where("itemId", whereIn: separateItemIds())
+                  // .orderBy("publishedDate", descending: true)
+                  // .snapshots(),
+                   .collection("items")
+                  .where("itemId",)
                   .orderBy("publishedDate", descending: true)
                   .snapshots(),
               builder: (context, snapshot) {
+                print(snapshot.hasData ? "Hello" : "Not");
                 return !snapshot.hasData
                     ? SliverToBoxAdapter(
                         child: Center(

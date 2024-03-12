@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "742403378883",
+    "project_id": "bhudipuja-38071",
+    "storage_bucket": "bhudipuja-38071.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742403378883:android:b2616cd5efd2a9e7f79c76",
+        "android_client_info": {
+          "package_name": "com.bhudipuja.seller_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-GuDy8-EJhUH6PZXdnbylb95eLIGxtCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742403378883:android:6610f17fd2881601f79c76",
+        "android_client_info": {
+          "package_name": "com.example.user_app_bhudipuja"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-GuDy8-EJhUH6PZXdnbylb95eLIGxtCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

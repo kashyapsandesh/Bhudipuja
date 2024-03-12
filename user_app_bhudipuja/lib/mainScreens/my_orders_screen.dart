@@ -6,7 +6,6 @@ import 'package:user_app_bhudipuja/widgets/order_card.dart';
 import 'package:user_app_bhudipuja/widgets/progress_bar.dart';
 import 'package:user_app_bhudipuja/widgets/simple_Appbar.dart';
 
-
 class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({super.key});
 
@@ -38,16 +37,19 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                       return FutureBuilder<QuerySnapshot>(
                         future: FirebaseFirestore.instance
                             .collection("items")
-                            .where("itemId",
-                                whereIn: separateOrderItemIds(
-                                    (snapshot.data?.docs[index].data()
-                                        as Map<String, dynamic>)["productIds"]))
+                            .where(
+                              "itemId",
+                              whereIn: separateOrderItemIds(
+                                  (snapshot.data?.docs[index].data()
+                                      as Map<String, dynamic>)["productIds"])
+                            )
                             .where("orderedBy",
                                 whereIn: (snapshot.data?.docs[index].data()
                                     as Map<String, dynamic>)["uid"])
                             .orderBy("publishedDate", descending: true)
                             .get(),
                         builder: (c, snap) {
+                          print(snap.hasData ? "Has" : "Not");
                           return snap.hasData
                               ? OrderCard(
                                   itemCount: snap.data?.docs.length,
